@@ -1,12 +1,14 @@
-class typetest {
+class typetest (
+  $filename = "file",
+) {
   file { '/pkg':
     ensure => directory,
     before => Mytest['testcode'],
   }
 
   mytest {'testcode':
-    provider => 'test',
-    supplyversion => 'file',
+    provider => 'newtest',
+    supplyversion => "$filename",
   }
 }
 
